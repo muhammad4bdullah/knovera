@@ -37,7 +37,7 @@ The app has already been pushed to the GitHub repository above. Each subsequent 
 
 The `/app` routes use Supabase Auth and database policies when configured:
 
-- Sign up, sign in, email-confirmation callback, sign out, password reset and update.
+- Sign up, sign in, email-confirmation callback, sign out, password reset and update. Registration creates an active session immediately when Supabase email confirmation is disabled; when confirmation is required, the confirmation callback signs the user in.
 - Create an organization; organization owners/admins can create expiring, single-use invitation links. Email delivery is not configured.
 - In **Academic workspace**, organization-scoped curricula and learning outcomes, validated CSV outcome import, SyllabusShift comparison of stored versions, staff question authoring with separately stored answer keys, reviewed question workflow, immutable published paper/answer-key snapshots, and separate student-paper and staff-answer-key print/PDF views.
 - Create classes, manage basic class rosters, and issue one-time, expiring enrollment codes; organization students can join classes with a code.

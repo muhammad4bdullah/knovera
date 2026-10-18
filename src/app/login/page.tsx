@@ -28,7 +28,7 @@ export default async function LoginPage({ searchParams }: Props) {
         <Link className="auth-brand" href="/"><span className="brand-mark">k</span><span>knovera</span></Link>
         <p className="eyebrow">WELCOME BACK</p>
         <h1>Sign in to your workspace</h1>
-        <p className="auth-description">Sign in with the email address connected to your institute, academy, teacher, or student account.</p>
+        <p className="auth-description">Sign in with the email address connected to your institute, academy, teacher, or student account. Students and staff should use the email their organization invited.</p>
         {!configured && <div className="callout callout-warning"><span className="callout-mark">!</span><span>Supabase is not configured yet. The public browser demo is still available at the home page.</span></div>}
         {error && <p className="auth-error" role="alert">{error}</p>}
         <form action={signInAction} className="auth-form">

@@ -25,9 +25,9 @@ export default async function SignupPage({ searchParams }: Props) {
         <Link className="auth-brand" href="/"><span className="brand-mark">k</span><span>knovera</span></Link>
         <p className="eyebrow">GET STARTED</p>
         <h1>Create your account</h1>
-        <p className="auth-description">Create one personal account. An institute, academy, or independent teacher can then create its workspace. Teachers and students should sign up with the email address their organization invited.</p>
+        <p className="auth-description">Create one personal account. An institute, academy, or independent teacher can then create its workspace. Teachers and students should register with the email address their organization invited. You’ll be signed in automatically when registration succeeds; if email confirmation is required, confirm from the email first and its link will sign you in.</p>
         {!configured && <div className="callout callout-warning"><span className="callout-mark">!</span><span>Supabase is not configured. You can still explore the clearly labeled sample demo from the home page.</span></div>}
-        {query["check-email"] && <div className="validation-success" role="status">Check your inbox and verify your email before signing in.</div>}
+        {query["check-email"] && <div className="validation-success" role="status">Account created. Check your inbox and confirm your email; the confirmation link will sign you in and take you to your workspace.</div>}
         {error && <p className="auth-error" role="alert">{error}</p>}
         <form action={signUpAction} className="auth-form">
           <input type="hidden" name="next" value={query.next ?? "/app"} />
