@@ -25,7 +25,7 @@ export default async function SignupPage({ searchParams }: Props) {
         <Link className="auth-brand" href="/"><span className="brand-mark">k</span><span>knovera</span></Link>
         <p className="eyebrow">GET STARTED</p>
         <h1>Create your account</h1>
-        <p className="auth-description">For this initial setup, the account you create becomes the owner of its organization.</p>
+        <p className="auth-description">Create one personal account. An institute, academy, or independent teacher can then create its workspace. Teachers and students should sign up with the email address their organization invited.</p>
         {!configured && <div className="callout callout-warning"><span className="callout-mark">!</span><span>Supabase is not configured. You can still explore the clearly labeled sample demo from the home page.</span></div>}
         {query["check-email"] && <div className="validation-success" role="status">Check your inbox and verify your email before signing in.</div>}
         {error && <p className="auth-error" role="alert">{error}</p>}

@@ -856,6 +856,10 @@ export default function KnoveraApp() {
         <aside className={`sidebar ${navOpen ? "sidebar-open" : ""}`}>
           <div className="brand-row"><span className="brand-mark">k</span><span className="brand-name">knovera</span><button className="sidebar-close icon-button" aria-label="Close navigation" onClick={() => setNavOpen(false)}><Icon name="close" /></button></div>
           <button className="organization-switcher" onClick={() => setActivePage("settings")}><span className="org-avatar">N</span><span className="org-details"><strong>Northstar Academy</strong><small>Sample organization</small></span><span className="org-caret">⌄</span></button>
+          <div className="demo-auth-links">
+            <Link className="button button-outline" href="/login">Sign in</Link>
+            <Link className="button button-primary" href="/signup">Create account</Link>
+          </div>
           <nav className="sidebar-nav" aria-label="Main navigation">
             {["Workspace", "Assessment", "Learning", "Insights", "Manage"].map((group) => <div className="nav-group" key={group}><p className="nav-group-label">{group}</p>{navigation.filter((item) => item.group === group).map((item) => <button key={item.key} className={`nav-link ${activePage === item.key && !activePaper ? "nav-link-active" : ""}`} onClick={() => { setActivePage(item.key); setActivePaperId(""); setNavOpen(false); }}><Icon name={item.icon} size={17} /><span>{item.label}</span>{item.key === "papers" && data.papers.length > 0 && <span className="nav-count">{data.papers.length}</span>}</button>)}</div>)}
           </nav>

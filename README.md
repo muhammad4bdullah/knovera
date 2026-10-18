@@ -15,6 +15,24 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000). The root curriculum and paper demo works without external services and saves data in the current browser's `localStorage`.
 
+TypeScript/TSX files are source code for the Next.js app; do not open them as HTML files. `npm run dev` compiles and serves the app locally. The browser-only demo is at `/`, and the Supabase-connected sign-in/onboarding starts at `/app`.
+
+## Publish the web app
+
+Pushing this repository to GitHub stores the source code; it does **not** host or run the website. This project uses Next.js server routes and server actions, so it needs a Next.js-compatible host rather than GitHub Pages or a standalone `.html` file. Vercel is the simplest option:
+
+1. Sign in to Vercel and choose **Add New → Project**.
+2. Import `muhammad4bdullah/knovera` from GitHub. Keep the framework preset as **Next.js**, and deploy the `master` branch.
+3. In the Vercel project’s **Settings → Environment Variables**, add:
+   - `NEXT_PUBLIC_SUPABASE_URL` — the URL of your Supabase project.
+   - `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` — its publishable/anon client key. Do not add a `service_role` or secret key.
+   - `NEXT_PUBLIC_SITE_URL` — the deployed Vercel URL, for example `https://your-project.vercel.app`.
+4. Apply those variables to **Production** and **Preview** environments as appropriate, then redeploy so the build receives them.
+5. In Supabase **Authentication → URL Configuration**, set the Site URL to your production domain and add its exact callback URL, `https://your-project.vercel.app/auth/callback`, to the redirect allow list. Add your local `http://localhost:3000/auth/callback` separately if you still develop locally. For a custom domain, update both Vercel and Supabase URLs.
+6. Open the Vercel deployment URL. The demo is at `/`; the connected account workflow is at `/app`.
+
+The app has already been pushed to the GitHub repository above. Each subsequent push to `master` can trigger a Vercel deployment. Keep `.env.local` on your machine; it is ignored by Git. A GitHub deployment alone does not add the environment variables or configure Supabase Auth. This prototype is not yet production-ready for real learner data; see [IMPLEMENTATION_STATUS.md](./IMPLEMENTATION_STATUS.md).
+
 ## Supabase-backed workflows
 
 The `/app` routes use Supabase Auth and database policies when configured:
